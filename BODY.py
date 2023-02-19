@@ -1,10 +1,9 @@
-headers_non_authorisation = {
+headers = {
     "Content-Type": "application/json"
 }
 
-headers_authorised = {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer f0c39958-7417-47f4-86f4-d4487d0b8e58"  # указать верный ключ авторизации
+Authorization = {
+    "Authorization": "Bearer f0c39958-7417-47f4-86f4-d4487d0b8e58"  # указать ключ авторизации
 }
 
 new_user_body = {
@@ -18,5 +17,5 @@ post_new_client_kit = {
        "card": {
            "id": 1,
            "name": "Позитивная проверка 1 символ"
-   },
+       },
 }
