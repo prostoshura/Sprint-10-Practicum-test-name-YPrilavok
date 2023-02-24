@@ -2,9 +2,12 @@ headers = {
     "Content-Type": "application/json"
 }
 
-Authorization = {
-    "Authorization": "Bearer f0c39958-7417-47f4-86f4-d4487d0b8e58"  # указать ключ авторизации
+
+Authorization_code = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer ddf42b13-385c-4024-a198-9c3b7c52fca5"
 }
+
 
 new_user_body = {
     "firstName": "Alexander",
@@ -12,10 +15,11 @@ new_user_body = {
     "address": "г. Москва, ул. Хохотушкина, д. 16"
 }
 
+
 post_new_client_kit = {
        "name": "A",
        "card": {
            "id": 1,
            "name": "Позитивная проверка 1 символ"
-       },
+       }
 }
