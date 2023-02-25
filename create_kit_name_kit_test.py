@@ -11,11 +11,19 @@ def get_post_new_client_kit(name):
     return current_client_kit
 
 
+def get_new_user_token():
+    # Создать нового клиента
+    user_body = BODY.new_user_body
+    resp_user = sender_stand_request.post_new_user(user_body)
+    # Запомнить токен авторизации
+    return resp_user.json()["authToken"]
+
+
 def positive_assert(name):
     # В переменную post_new_client_kit сохраняется обновленное тело запроса
     post_new_client_kit = get_post_new_client_kit(name)
     # В переменную user_response сохраняется результат запроса на создание набора
-    user_response = sender_stand_request.post_new_client_kit(post_new_client_kit)
+    user_response = sender_stand_request.post_new_client_kit(post_new_client_kit, get_new_user_token)
 
     # Проверяется, что код ответа равен 201
     assert user_response.status_code == 201
@@ -31,7 +39,7 @@ def negative_assert(name):
     # В переменную post_new_client_kit сохраняется обновленное тело запроса
     post_new_client_kit = get_post_new_client_kit(name)
     # В переменную user_response сохраняется результат запроса на создание набора
-    user_response = sender_stand_request.post_new_client_kit(post_new_client_kit)
+    user_response = sender_stand_request.post_new_client_kit(post_new_client_kit, get_new_user_token)
 
     # Проверяется, что код ответа равен 400
     assert user_response.status_code == 400
@@ -59,7 +67,7 @@ def negative_assert(name):
 
 def negative_assert_noname(post_new_client_kit):
     # В переменную user_response сохраняется результат запроса на создание набора
-    user_response = sender_stand_request.post_new_client_kit(post_new_client_kit)
+    user_response = sender_stand_request.post_new_client_kit(post_new_client_kit, get_new_user_token)
     # Проверяется, что код ответа равен 500
     assert user_response.status_code == 500
     # Проверяется, что текст ответа указан в соответствии с требованиями
